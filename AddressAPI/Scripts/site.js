@@ -1,4 +1,7 @@
-﻿        $("#btnAdd").click(function () {
+﻿$(function () {
+
+
+$("#btnAdd").click(function () {
 
             var Customer = {
                 "MeterNo": $("#MeterNo").val(),
@@ -31,7 +34,7 @@
             var myurl = 'http://localhost:51337/api/Address/GetCustomerDetails/' + id;
             $.ajax({
                 url: myurl,
-                type: 'GET',
+                type: 'POST',
                 dataType: 'json',
                 success: function (customer, status, xhr) {
                     var output = $("#tableRows");
@@ -41,4 +44,4 @@
                 error: function (xhr, status, error) { alert(error); }
             });
         }
-
+});
