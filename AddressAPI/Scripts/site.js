@@ -1,5 +1,16 @@
 ﻿$(function () {
-
+    $("#form1").submit(function () {
+        var jqxhr = $.post('api/Address/SearchByMeterNo', { "": $('#txtSEarch').val() })
+            .success(function () {
+                var output = $("#tableRows");
+                output.empty();
+                output.append("<tr><td><a href='javascript:ShowDetails(" + customer.MeterNo + ")' title='Show details'>" + customer.MeterNo + "</a></td><td>" + customer.CustomerName + "</td><td>" + customer.AccountNo + "</td><td>" + customer.Address + "</td><td>" + customer.MobilePhoneNo + "</td><td><a style='color:red;' href='javascript:DeleteRecord(" + customer.MeterNo + ")' title='Delete details'>Delete</a></td></tr>");
+            })
+        .error(function () {
+            $("#tableRows").html("No record found.");
+        });
+        return false;
+    });
 
 $("#btnAdd").click(function () {
 
