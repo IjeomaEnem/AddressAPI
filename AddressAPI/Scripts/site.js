@@ -1,5 +1,5 @@
 ﻿$(function () {
-    $("#form1").submit(function () {
+    $("#searchform").submit(function () {
         var jqxhr = $.post('api/Address/SearchByMeterNo', { "": $('#txtSEarch').val() })
             .success(function () {
                 var output = $("#tableRows");
