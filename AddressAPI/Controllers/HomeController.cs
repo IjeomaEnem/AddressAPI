@@ -12,17 +12,24 @@ namespace AddressAPI.Controllers
         ApplicationDbContext _db = new ApplicationDbContext();
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
+            ViewBag.Title = "Search Page";
 
             return View();
         }
-        public ActionResult ListRecords()
-        {
-            var customers = _db.Customers.ToList();
-            ViewBag.Title = "List Records";
+        //public ActionResult GetCustomer(int meterno)
+        //{
+        //    var customer = _db.Customers.FirstOrDefault(m => m.MeterNo == meterno);
+        //    ViewBag.Title = "Customer Search Result";
+            
+        //    return View(customer);
+        //}
+        //public ActionResult ListRecords()
+        //{
+        //    var customers = _db.Customers.ToList();
+        //    ViewBag.Title = "List Records";
 
-            return View(customers);
-        }
+        //    return View(customers);
+        //}
 
         
     }

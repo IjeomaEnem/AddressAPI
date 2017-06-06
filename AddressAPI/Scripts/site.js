@@ -14,13 +14,19 @@
                 data: JSON.stringify(Customer),
                 contentType: "application/json;charset=utf-8",
                 success: function (data, status, xhr) {
-                   ShowDetails();
-                },
+                                 },
                 error: function (xhr) {
                     alert(xhr.responseText);
                 }
             });
         });
+
+        $("#btnSearch").click(function () {
+
+            var meterno = $("#txtSearch").val();
+            ShowDetails(meterno);
+        });
+
         function ShowDetails(id) {
             var myurl = 'http://localhost:51337/api/Address/GetCustomerDetails/' + id;
             $.ajax({
