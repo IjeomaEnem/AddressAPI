@@ -11,7 +11,7 @@ using System.Web.Http.Description;
 
 namespace PHCNAPI.Controllers
 {
-
+    [Route("api/Address")]
     public class AddressController : ApiController
     {
         ApplicationDbContext _db = new ApplicationDbContext();

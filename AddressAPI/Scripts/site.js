@@ -1,8 +1,9 @@
 ﻿$(function () {
-    var table = $("#tableRows");
-    var meterno = $("#txtSearch").val();
+    
     $("#btnSearch").click(function () {
-        var jqxhr = $.post('http://localhost:51337/api/Address/SearchByMeterNo/', { "": meterno })
+        var table = $("#tableRows");
+    var meterno = $("#txtSearch").val();
+        var jqxhr = $.get('http://localhost:51337/api/Address/SearchByMeterNo/'+meterno)
             .success(function () {
                 var output = table;
                 output.empty();
