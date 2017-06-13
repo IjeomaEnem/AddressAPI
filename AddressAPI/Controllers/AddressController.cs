@@ -23,7 +23,7 @@ namespace PHCNAPI.Controllers
         }
 
         [HttpGet]
-        public HttpResponseMessage SearchByMeterNo([FromBody]int meterno)
+        public HttpResponseMessage SearchByMeterNo(int meterno)
         {
             var customer = _db.Customers.FirstOrDefault(x => x.MeterNo == meterno);
             if (customer != null)
