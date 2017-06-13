@@ -1,8 +1,10 @@
 ﻿$(function () {
-    $("#searchform").submit(function () {
-        var jqxhr = $.post('api/Address/SearchByMeterNo', { "": $('#txtSEarch').val() })
+    var table = $("#tableRows");
+    var meterno = $("#txtSearch").val();
+    $("#btnSearch").click(function () {
+        var jqxhr = $.post('http://localhost:51337/api/Address/SearchByMeterNo/', { "": meterno })
             .success(function () {
-                var output = $("#tableRows");
+                var output = table;
                 output.empty();
                 output.append("<tr><td><a href='javascript:ShowDetails(" + customer.MeterNo + ")' title='Show details'>" + customer.MeterNo + "</a></td><td>" + customer.CustomerName + "</td><td>" + customer.AccountNo + "</td><td>" + customer.Address + "</td><td>" + customer.MobilePhoneNo + "</td><td><a style='color:red;' href='javascript:DeleteRecord(" + customer.MeterNo + ")' title='Delete details'>Delete</a></td></tr>");
             })
@@ -12,7 +14,7 @@
         return false;
     });
 
-$("#btnAdd").click(function () {
+        $("#btnAdd").click(function () {
 
             var Customer = {
                 "MeterNo": $("#MeterNo").val(),
@@ -35,11 +37,20 @@ $("#btnAdd").click(function () {
             });
         });
 
-        $("#btnSearch").click(function () {
+        //$("#btnSearch").click(function () {
+        //    $.ajax({
+        //        type:'GET',
+        //        url: 'api/Address/SearchByMeterNo',
+        //        datatype: 'json',
+        //        success: function (data) {
+        //            table.empty();
+        //            table.append("<tr><td><a href='javascript:SearchByMeterNo(" + customer.MeterNo + ")' title='Show details'>" + customer.MeterNo + "</a></td><td>" + customer.CustomerName + "</td><td>" + customer.AccountNo + "</td><td>" + customer.Address + "</td><td>" + customer.MobilePhoneNo + "</td><td><a style='color:red;' href='javascript:DeleteRecord(" + customer.MeterNo + ")' title='Delete details'>Delete</a></td></tr>");
+        //        }
+        //    })
 
-            var meterno = $("#txtSearch").val();
-            ShowDetails(meterno);
-        });
+
+        //    //ShowDetails(meterno);
+        //});
 
         function ShowDetails(id) {
             var myurl = 'http://localhost:51337/api/Address/GetCustomerDetails/' + id;

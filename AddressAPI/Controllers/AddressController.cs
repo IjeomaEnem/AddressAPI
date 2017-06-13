@@ -23,22 +23,32 @@ namespace PHCNAPI.Controllers
         }
 
         [HttpGet]
-        public HttpResponseMessage SearchByMeterNo(int meterno)
+        public HttpResponseMessage SearchByMeterNo([FromBody]int meterno)
         {
             var customer = _db.Customers.FirstOrDefault(x => x.MeterNo == meterno);
             if (customer != null)
             {
                 return Request.CreateResponse(HttpStatusCode.OK, customer);
             }
-            else { 
-                return Request.CreateErrorResponse(HttpStatusCode.NotFound,"Customer with the MeterNo- "+ meterno.ToString() +" not found .");
+            else
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Customer with the MeterNo- " + meterno.ToString() + " not found .");
             }
-           
-
-
-
-
         }
+
+        //[HttpGet]
+        //[Route("/search/{meterno}")]
+        //public HttpResponseMessage Search(int meterno)
+        //{
+        //    try
+        //    {
+
+        //    }
+        //    catch {}
+        
+
+
+        //}
       
     
 
